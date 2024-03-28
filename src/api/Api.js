@@ -38,6 +38,18 @@ export default {
        // const json = await response.json();        
         return response;
     },
+    getCategorias: async () => {
+        const req = await fetch(`${BASE_API}/categorias`, {
+            method: 'GET', 
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+           
+        });
+        const json = await req.json();        
+        return json;
+    },
 
     
 };
