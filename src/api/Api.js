@@ -50,6 +50,19 @@ export default {
         const json = await req.json();        
         return json;
     },
+    addCategoria: async (token,fd) => {
+        const response = await fetch(`${BASE_API}/categorias`, {
+            method: 'POST',
+            headers: { 
+             'Accept': 'application/json',
+             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+            },
+
+            body:  JSON.stringify(fd)
+        });
+        return response;
+    },
 
     
 };

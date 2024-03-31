@@ -7,6 +7,7 @@ import { DataProvider } from './context/DataContext';
 import { ThemeProvider } from './context/ThemeContext';
 import PrivateRoute from './routes/PrivateRoute';
 import Header from './components/Header';
+import NovaCategoria from './pages/NovaCategoria';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
                   <Route path="/signin" element={<SignIn/>}/>
                   <Route element={<PrivateRoute/>}>
                       <Route path="/" element={<Home/>}/>
+                      <Route path="/nova-categoria" element={<NovaCategoria/>}/>
                   </Route>
               </Routes>
              
