@@ -1,7 +1,7 @@
 import { Button, Label, TextInput,Alert, Spinner } from 'flowbite-react';
 import React, {useState,useContext} from 'react';
 import DataContext from '../context/DataContext';
-import { Link,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo-500.png';
 import Api from '../api/Api';
 
@@ -31,12 +31,7 @@ const SignIn = () => {
           setLoading(true);
           setErrorMessage(null);
           
-          //
-          // const res = await fetch('/api/auth/signin', {
-          //   method: 'POST',
-          //   headers: { 'Content-Type': 'application/json' },
-          //   body: JSON.stringify(formData),
-          // });
+         
           const res = await Api.login(formData);
           //
           if(res.status===200){

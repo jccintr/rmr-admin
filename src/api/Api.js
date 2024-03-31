@@ -55,11 +55,23 @@ export default {
             method: 'POST',
             headers: { 
              'Accept': 'application/json',
-             'Content-Type': 'application/json',
+             'Content-Type': 'multipart/form-data',
             'Authorization': 'Bearer ' + token
             },
 
             body:  JSON.stringify(fd)
+        });
+        return response;
+    },
+    addCategoria2: async (token,fd) => {
+        const response = await fetch(`${BASE_API}/categorias`, {
+            method: 'POST',
+            headers: { 
+             
+            'Authorization': 'Bearer ' + token
+            },
+
+            body: fd
         });
         return response;
     },
