@@ -8,6 +8,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import PrivateRoute from './routes/PrivateRoute';
 import Header from './components/Header';
 import NovaCategoria from './pages/NovaCategoria';
+import EditCategoria from './pages/EditCategoria';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
                   <Route element={<PrivateRoute/>}>
                       <Route path="/" element={<Home/>}/>
                       <Route path="/nova-categoria" element={<NovaCategoria/>}/>
+                      <Route path='/edit-categoria/:Id' element={<EditCategoria />} />
                   </Route>
               </Routes>
              

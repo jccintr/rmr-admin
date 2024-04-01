@@ -36,7 +36,7 @@ const NovaCategoria = () => {
       fd.append('descricao',formData.descricao);
       fd.append('imagem',imagem);
 
-      const response = await Api.addCategoria2(loggedUser.token,fd);
+      const response = await Api.addCategoria(loggedUser.token,fd);
        
       if (response.status === 201){
        
@@ -78,6 +78,7 @@ const NovaCategoria = () => {
         </div>
         {file&&<img src={file} alt='uploaded umage' className='w-full h-72 object-cover' />}
         <Button onClick={onAdd} gradientMonochrome="info" disabled={isLoading}>{isLoading ? <Spinner size='sm'/>:'ADICIONAR CATEGORIA'}</Button>
+        <Button onClick={()=> navigate('/?tab=categorias')} gradientMonochrome="failure" >CANCELAR</Button>
         {publishError && <Alert className='mt-5' color='failure'>{publishError}</Alert>}
       </form>
     </div>

@@ -48,22 +48,34 @@ export default {
            
         });
         const json = await req.json();        
-        return json;
+    return json;
     },
-    addCategoria: async (token,fd) => {
-        const response = await fetch(`${BASE_API}/categorias`, {
-            method: 'POST',
-            headers: { 
-             'Accept': 'application/json',
-             'Content-Type': 'multipart/form-data',
-            'Authorization': 'Bearer ' + token
+    getCategoria: async (id) => {
+        const req = await fetch(`${BASE_API}/categorias/${id}`, {
+            method: 'GET', 
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
             },
-
-            body:  JSON.stringify(fd)
+           
         });
-        return response;
+        const json = await req.json();        
+    return json;
     },
-    addCategoria2: async (token,fd) => {
+    // addCategoria: async (token,fd) => {
+    //     const response = await fetch(`${BASE_API}/categorias`, {
+    //         method: 'POST',
+    //         headers: { 
+    //          'Accept': 'application/json',
+    //          'Content-Type': 'multipart/form-data',
+    //         'Authorization': 'Bearer ' + token
+    //         },
+
+    //         body:  JSON.stringify(fd)
+    //  });
+    //     return response;
+    // },
+    addCategoria: async (token,fd) => {
         const response = await fetch(`${BASE_API}/categorias`, {
             method: 'POST',
             headers: { 
@@ -73,6 +85,17 @@ export default {
 
             body: fd
         });
+        return response;
+    },
+    updateCategoria: async (token,fd,id) => {
+        const response = await fetch(`${BASE_API}/categorias/${id}`, {
+            method: 'POST',
+            headers: { 
+              'Authorization': 'Bearer ' + token
+            },
+
+            body: fd
+     });
         return response;
     },
 
