@@ -3,7 +3,6 @@ import { FaUserCircle } from "react-icons/fa";
 import { Button } from "flowbite-react";
 import Api from '../../api/Api';
 import { useNavigate } from 'react-router-dom';
-//import { FaCrown } from "react-icons/fa6";
 import { FaCrown } from "react-icons/fa";
 
 const CardCliente = ({cliente}) => {

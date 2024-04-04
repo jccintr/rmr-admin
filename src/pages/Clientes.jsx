@@ -38,7 +38,6 @@ const Clientes = () => {
     <div className='pt-4 w-full px-4  mx-auto dark:bg-slate-800'>
     <div className='flex flex-col items-center'>
         <div className='flex w-full flex-col md:flex-row md:justify-end'>
-            
             <TextInput type='text' placeholder='pesquisar...' rightIcon={CiSearch} className='mt-2 md:mt-0 lg:inline' onChange={e => setSearchText(e.target.value)}/>
         </div>
         

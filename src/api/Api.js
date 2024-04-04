@@ -166,6 +166,18 @@ export default {
      });
         return response;
     },
+    getAllOrcamentos: async (token) => {
+        const response = await fetch(`${BASE_API}/orcamentos/all`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+        });
+        const json = await response.json();
+        return json;
+    },
 
     
 };
