@@ -4,8 +4,10 @@ import { Button } from "flowbite-react";
 import Api from '../../api/Api';
 import Stars from '../Stars';
 import { FaCrown } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const CardWorker = ({worker}) => {
+  const navigate = useNavigate()
   return (
     <div className="w-[350px] md:w-[300px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" >
     
@@ -20,7 +22,7 @@ const CardWorker = ({worker}) => {
       <Stars stars={worker.user.stars} showNumber={false}/>
       <span className="mt-3 text-sm text-gray-500 dark:text-gray-400">{worker.user.concelho.nome}</span>
       <span className="text-sm text-gray-500 dark:text-gray-400">{worker.user.concelho.distrito.nome}</span>
-      <Button size="sm" className='mt-4' color="blue" onClick={()=>navigate('/nova-categoria')}>Detalhes</Button>
+      <Button size="sm" className='mt-4' color="blue" onClick={()=>navigate('/edit-worker',{state:{worker}})}>Editar</Button>
      
     </div>
   </div>

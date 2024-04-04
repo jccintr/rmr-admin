@@ -10,6 +10,7 @@ import Header from './components/Header';
 import NovaCategoria from './pages/NovaCategoria';
 import EditCategoria from './pages/EditCategoria';
 import EditCliente from './pages/EditCliente';
+import EditWorker from './pages/EditWorker';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
                       <Route path="/nova-categoria" element={<NovaCategoria/>}/>
                       <Route path='/edit-categoria/:Id' element={<EditCategoria />} />
                       <Route path='/edit-cliente' element={<EditCliente />} />
+                      <Route path='/edit-worker' element={<EditWorker />} />
                   </Route>
               </Routes>
              

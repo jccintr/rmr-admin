@@ -155,6 +155,17 @@ export default {
      });
         return response;
     },
+    updateWorker: async (token,fd,id) => {
+        const response = await fetch(`${BASE_API}/workers/${id}`, {
+            method: 'POST',
+            headers: { 
+              'Authorization': 'Bearer ' + token
+            },
+
+            body: fd
+     });
+        return response;
+    },
 
     
 };

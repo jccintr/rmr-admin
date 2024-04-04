@@ -17,7 +17,6 @@ const EditCliente = () => {
     const [publishError, setPublishError] = useState(null);
     const navigate = useNavigate();
     const [isLoading,setIsLoading] = useState(false);
-   
     const [distritos,setDistritos] = useState([]);
     const [concelhos,setConcelhos] = useState([]);
     const inputFile = useRef(null);
