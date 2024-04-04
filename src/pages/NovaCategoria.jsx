@@ -9,7 +9,7 @@ const NovaCategoria = () => {
     const {loggedUser} = useContext(DataContext);
     const [file, setFile] = useState(null);
     const [imagem, setImagem] = useState(null);
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({nome:'',descricao:''});
     const [publishError, setPublishError] = useState(null);
     const navigate = useNavigate();
     const [isLoading,setIsLoading] = useState(false);
@@ -54,7 +54,7 @@ const NovaCategoria = () => {
       if(e.target.files[0]){
         setFile(URL.createObjectURL(e.target.files[0]));
         setImagem(e.target.files[0]);
-        console.log(e.target.files[0]);
+        //console.log(e.target.files[0]);
         setFormData({ ...formData, imagem: e.target.files[0]});
       }
       

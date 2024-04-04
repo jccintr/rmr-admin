@@ -9,6 +9,7 @@ import PrivateRoute from './routes/PrivateRoute';
 import Header from './components/Header';
 import NovaCategoria from './pages/NovaCategoria';
 import EditCategoria from './pages/EditCategoria';
+import EditCliente from './pages/EditCliente';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
                       <Route path="/" element={<Home/>}/>
                       <Route path="/nova-categoria" element={<NovaCategoria/>}/>
                       <Route path='/edit-categoria/:Id' element={<EditCategoria />} />
+                      <Route path='/edit-cliente' element={<EditCliente />} />
                   </Route>
               </Routes>
              

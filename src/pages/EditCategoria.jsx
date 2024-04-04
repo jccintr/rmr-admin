@@ -46,12 +46,12 @@ const EditCategoria = () => {
         const fd = new FormData();
         fd.append('nome',formData.nome);
         fd.append('descricao',formData.descricao);
-        fd.append('ativo',formData.ativo);
+        fd.append('ativo',Number(formData.ativo));
         if(imagemAtualizada){
             fd.append('imagem',imagem);
         }
       
-       console.log(fd);
+      
         const response = await Api.updateCategoria(loggedUser.token,fd,Id);
          
         if (response.status === 200){
@@ -98,7 +98,7 @@ const EditCategoria = () => {
       <Button onClick={()=> navigate('/?tab=categorias')} gradientMonochrome="failure" >CANCELAR</Button>
       {publishError && <Alert className='mt-5' color='failure'>{publishError}</Alert>}
     </form>
-  </div>
+    </div>
   )
 }
 
