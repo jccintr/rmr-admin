@@ -36,17 +36,17 @@ const Clientes = () => {
 
   return (
     <div className='pt-4 w-full px-4  mx-auto dark:bg-slate-800'>
-    <div className='flex flex-col items-center'>
-        <div className='flex w-full flex-col md:flex-row md:justify-end'>
-            <TextInput type='text' placeholder='pesquisar...' rightIcon={CiSearch} className='mt-2 md:mt-0 lg:inline' onChange={e => setSearchText(e.target.value)}/>
-        </div>
-        
-        {clientesFiltrado.length>0?<div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 pt-4 pb-4 mx-auto'>
-          {clientesFiltrado.map((cliente)=><CardCliente key={cliente.id} cliente={cliente}/>)}
-        </div>:!isLoading?<h3 className='mt-10 text-gray-900 dark:text-white'>Clientes não encontrados.</h3>:<Spinner className='mt-10' color="info" aria-label="Info spinner example" size="xl" />}
-    </div>
+      <div className='flex flex-col items-center'>
+          <div className='flex w-full flex-col md:flex-row md:justify-end'>
+              <TextInput type='text' placeholder='pesquisar...' rightIcon={CiSearch} className='mt-2 md:mt-0 lg:inline' onChange={e => setSearchText(e.target.value)}/>
+          </div>
+          
+          {clientesFiltrado.length>0?<div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 pt-4 pb-4 mx-auto'>
+            {clientesFiltrado.map((cliente)=><CardCliente key={cliente.id} cliente={cliente}/>)}
+          </div>:!isLoading?<h3 className='mt-10 text-gray-900 dark:text-white'>Clientes não encontrados.</h3>:<Spinner className='mt-10' color="info" aria-label="Info spinner example" size="xl" />}
+      </div>
    
-</div>
+   </div>
   )
 }
 
