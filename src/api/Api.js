@@ -178,6 +178,42 @@ export default {
         const json = await response.json();
         return json;
     },
+    getParametros: async (token) => {
+        const response = await fetch(`${BASE_API}/config`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+        });
+      
+        return response;
+    },
+    // updateParametros: async (token,fd) => {
+    //     const response = await fetch(`${BASE_API}/config`, {
+    //         method: 'POST',
+    //         headers: { 
+    //           'Authorization': 'Bearer ' + token
+    //         },
+
+    //         body: fd
+    //     });
+    //     return response;
+    // },
+    updateParametros: async (token,fd) => {
+        const response = await fetch(`${BASE_API}/config`, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json', 
+              'Authorization': 'Bearer ' + token
+            },
+
+            body: JSON.stringify(fd)
+        });
+        return response;
+    },
 
     
 };

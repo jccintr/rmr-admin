@@ -27,7 +27,9 @@ const TableOrcamentos = ({orcamentos}) => {
                    
                   </Table.Cell>
                   <Table.Cell className='hidden md:table-cell'>{orcamento.propostas.length}</Table.Cell>
-                  <Table.Cell><Button size="xs"  color="blue" onClick={()=>alert('tocou no botao detalhes')}>Detalhes</Button></Table.Cell>
+                  <Table.Cell>
+                     <Button size="xs"  color="blue" onClick={()=>alert('tocou no botao detalhes')}>Detalhes</Button>
+                  </Table.Cell>
               </Table.Row>
             </Table.Body>
               ))}
