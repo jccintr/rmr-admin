@@ -2,8 +2,11 @@ import React from 'react'
 import { FaUserCircle } from "react-icons/fa";
 import Api from '../../api/Api';
 import { Table,Button } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom';
+
 
 const TableOrcamentos = ({orcamentos}) => {
+  const navigate = useNavigate();
   return (
     <Table hoverable className='shadow-md'>
             <Table.Head>
@@ -28,7 +31,7 @@ const TableOrcamentos = ({orcamentos}) => {
                   </Table.Cell>
                   <Table.Cell className='hidden md:table-cell'>{orcamento.propostas.length}</Table.Cell>
                   <Table.Cell>
-                     <Button size="xs"  color="blue" onClick={()=>alert('tocou no botao detalhes')}>Detalhes</Button>
+                     <Button size="xs"  color="blue" onClick={()=>navigate('/orcamento/' + orcamento.id)}>Detalhes</Button>
                   </Table.Cell>
               </Table.Row>
             </Table.Body>

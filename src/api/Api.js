@@ -178,6 +178,18 @@ export default {
         const json = await response.json();
         return json;
     },
+    getOrcamento: async (token,id) => {
+        const response = await fetch(`${BASE_API}/orcamentos/${id}`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+        });
+        const json = await response.json();
+        return json;
+    },
     getParametros: async (token) => {
         const response = await fetch(`${BASE_API}/config`, {
             method: 'GET',
@@ -190,17 +202,7 @@ export default {
       
         return response;
     },
-    // updateParametros: async (token,fd) => {
-    //     const response = await fetch(`${BASE_API}/config`, {
-    //         method: 'POST',
-    //         headers: { 
-    //           'Authorization': 'Bearer ' + token
-    //         },
-
-    //         body: fd
-    //     });
-    //     return response;
-    // },
+   
     updateParametros: async (token,fd) => {
         const response = await fetch(`${BASE_API}/config`, {
             method: 'POST',
@@ -211,6 +213,17 @@ export default {
             },
 
             body: JSON.stringify(fd)
+        });
+        return response;
+    },
+    getDashboardData: async (token) => {
+        const response = await fetch(`${BASE_API}/dashboard`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
         });
         return response;
     },
