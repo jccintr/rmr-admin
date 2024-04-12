@@ -1,15 +1,11 @@
-import { useContext} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button,Textarea , TextInput, Spinner,Label} from 'flowbite-react';
-import DataContext from '../context/DataContext';
-import Api from '../api/Api';
 import CardWorker2 from '../components/cards/CardWorker2';
 import { FaTrophy } from "react-icons/fa";
 
 
 
 const ViewProposta = () => {
-    const {loggedUser} = useContext(DataContext);
     const params = useLocation();
     const {proposta} = params.state;
     const navigate = useNavigate();

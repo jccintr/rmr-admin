@@ -1,31 +1,18 @@
 import React, {useContext} from 'react';
-import { Navbar,TextInput, Button, Dropdown, Avatar } from 'flowbite-react';
-import { Link, useLocation } from 'react-router-dom';
-import { CiSearch } from "react-icons/ci";
+import { Navbar, Button } from 'flowbite-react';
+import { useLocation } from 'react-router-dom';
 import { FaMoon, FaSun } from "react-icons/fa";
 import DataContext from '../context/DataContext';
 import useTheme from '../context/ThemeContext';
 import logo from '../assets/logo-500.png';
+import Api from '../api/Api';
 
 const Header = () => {
     const {themeMode,lightTheme,darkTheme} = useTheme();
     const {loggedUser,setLoggedUser} = useContext(DataContext);
     const path = useLocation().pathname;
 
-    const handleSignout = async () => {
-      try {
-        const response = await fetch('/api/auth/logout', {
-          method: 'POST',
-        });
-        if(response.status === 200){
-          setLoggedUser(null);
-          navigate('/signin');
-       } 
-       
-      } catch (error) {
-        
-      }
-    };
+    
 
    const onChangeColorMode = () => {
            if(themeMode === 'dark'){
@@ -35,9 +22,15 @@ const Header = () => {
            }
     }
 
-    const onLogout = () => {
-      setLoggedUser(null);
-      navigate('/signin');
+    const onLogout = async () => {
+      
+      const response = await Api.logout(loggedUser.token);
+      if(response.status === 200){
+        setLoggedUser(null);
+        navigate('/signin');
+      } else {
+        alert('Falha ao fazer logout.');
+      }
     }
 
   return (

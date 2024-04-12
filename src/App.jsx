@@ -13,6 +13,7 @@ import EditCliente from './pages/EditCliente';
 import EditWorker from './pages/EditWorker';
 import ViewOrcamento from './pages/ViewOrcamento';
 import ViewProposta from './pages/ViewProposta';
+import ViewTransacao from './pages/ViewTransacao';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
                       <Route path='/edit-worker' element={<EditWorker />} />
                       <Route path='/orcamento/:Id' element={<ViewOrcamento />} />
                       <Route path='/proposta' element={<ViewProposta />} />
+                      <Route path='/order' element={<ViewTransacao />} />
                   </Route>
               </Routes>
              

@@ -38,6 +38,18 @@ export default {
        // const json = await response.json();        
         return response;
     },
+    logout: async (token) => {
+        const response = await fetch(`${BASE_API}/logout`, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            
+        });
+        return response;
+    },
     getCategorias: async () => {
         const req = await fetch(`${BASE_API}/categorias`, {
             method: 'GET', 
@@ -226,6 +238,18 @@ export default {
             },
         });
         return response;
+    },
+    getOrders: async (token) => {
+        const response = await fetch(`${BASE_API}/orders`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+        });
+        const json = await response.json();
+        return json;
     },
 
     

@@ -14,6 +14,7 @@ const TableOrcamentos = ({orcamentos}) => {
                   <Table.HeadCell>Titulo</Table.HeadCell>
                   <Table.HeadCell className='hidden md:table-cell'>Cliente</Table.HeadCell>
                   <Table.HeadCell className='hidden md:table-cell'>Propostas</Table.HeadCell>
+                  <Table.HeadCell className='hidden md:table-cell'>Status</Table.HeadCell>
                   <Table.HeadCell></Table.HeadCell>
             </Table.Head>
             {orcamentos.map((orcamento) => (
@@ -30,6 +31,7 @@ const TableOrcamentos = ({orcamentos}) => {
                    
                   </Table.Cell>
                   <Table.Cell className='hidden md:table-cell'>{orcamento.propostas.length}</Table.Cell>
+                  <Table.Cell className='hidden md:table-cell'>{orcamento.status===0?'Aberto':'Encerrado'}</Table.Cell>
                   <Table.Cell>
                      <Button size="xs"  color="blue" onClick={()=>navigate('/orcamento/' + orcamento.id)}>Detalhes</Button>
                   </Table.Cell>
