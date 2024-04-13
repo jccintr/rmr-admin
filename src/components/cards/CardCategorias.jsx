@@ -7,11 +7,11 @@ const CardCategorias = ({categoria}) => {
     const navigate = useNavigate();
  
     return (
-        <div className="w-[350px] md:w-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <img className="w-full h-48 object-cover rounded-t-lg" src={`${Api.base_storage}/${categoria.imagem}`} alt="" />
+        <div className="w-[330px] md:w-[330px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <img className="w-full h-36 object-cover rounded-t-lg" src={`${Api.base_storage}/${categoria.imagem}`} alt="" />
         <div className="p-2">
                 <a href="#">
-                    <h5 className="mb-2 text-xl  tracking-tight text-gray-900 dark:text-white">{categoria.nome}</h5>
+                    <h5 className="mb-2 text-lg  tracking-tight text-gray-900 dark:text-white">{categoria.nome}</h5>
                 </a>
                 <Button size="sm" className='mt-4' color="blue" onClick={()=>navigate('/edit-categoria/'+categoria.id)}>Editar</Button>
             </div>

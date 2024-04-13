@@ -37,7 +37,7 @@ const Categorias = () => {
                       <TextInput type='text' placeholder='pesquisar...' rightIcon={CiSearch} className='mt-2 md:mt-0 lg:inline' onChange={e => setSearchText(e.target.value)}/>
                   </div>
                   
-                  {categoriasFiltrado.length>0?<div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 pt-4 pb-4 mx-auto'>
+                  {categoriasFiltrado.length>0?<div className='grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-3 gap-4 pt-4 pb-4 mx-auto'>
                     {categoriasFiltrado.map((categoria)=><CardCategorias key={categoria.id} categoria={categoria}/>)}
                   </div>:!isLoading?<h3 className='mt-10 text-gray-900 dark:text-white'>Categoria não encontrada.</h3>:<Spinner className='mt-10' color="info" aria-label="Info spinner example" size="xl" />}
               </div>

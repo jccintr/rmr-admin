@@ -34,7 +34,7 @@ const Dashboard = () => {
     <div className='pt-4 w-full px-4  mx-auto dark:bg-slate-800'>
       <div className='flex flex-col items-center'>
      
-        {!isLoading?<div className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-4 pt-4 pb-4 mx-auto'>
+        {!isLoading?<div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 pt-4 pb-4 mx-auto'>
           
             <DashClientes value={dashboard.clientes}/>
             <DashWorkers value={dashboard.workers}/>

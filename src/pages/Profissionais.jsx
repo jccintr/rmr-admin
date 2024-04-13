@@ -42,7 +42,7 @@ const Profissionais = () => {
             <TextInput type='text' placeholder='pesquisar...' rightIcon={CiSearch} className='mt-2 md:mt-0 lg:inline' onChange={e => setSearchText(e.target.value)}/>
         </div>
         
-        {workersFiltrado.length>0?<div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 pt-4 pb-4 mx-auto'>
+        {workersFiltrado.length>0?<div className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-4 pt-4 pb-4 mx-auto'>
           {workersFiltrado.map((worker)=><CardWorker key={worker.id} worker={worker}/>)}
         </div>:!isLoading?<h3 className='mt-10 text-gray-900 dark:text-white'>Profissionais não encontrados.</h3>:<Spinner className='mt-10' color="info" aria-label="Info spinner example" size="xl" />}
     </div>

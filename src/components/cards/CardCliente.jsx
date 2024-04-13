@@ -8,7 +8,7 @@ import { FaCrown } from "react-icons/fa";
 const CardCliente = ({cliente}) => {
   const navigate = useNavigate()
   return (
-    <div className="w-[350px] md:w-[300px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" >
+    <div className="w-[330px] md:w-[250px] lg:w-[300px] py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" >
     
     <div className="flex flex-col items-center">
     {cliente.avatar?<img className="mb-3 w-[60px] h-[60px] rounded-full shadow-lg" src={`${Api.base_storage}/${cliente.avatar}`} alt="" />:<FaUserCircle className='text-gray-400 dark:text-white mb-3' size={60} />}
