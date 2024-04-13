@@ -14,7 +14,7 @@ const EditWorker = () => {
   const [file, setFile] = useState(null);
   const [imagem, setImagem] = useState(null);
   const [imagemAtualizada, setImagemAtualizada] = useState(false);
-  const [formData, setFormData] = useState({nome:worker.user.name,email:worker.user.email,telefone:worker.user.telefone||'',avatar: worker.user.avatar,categoriaId:worker.categoria_id,distritoId: worker.user.concelho.distrito_id,concelhoId: worker.user.concelho_id, isAdmin: worker.user.isAdmin});
+  const [formData, setFormData] = useState({nome:worker.user.name,email:worker.user.email,telefone:worker.user.telefone||'',avatar: worker.user.avatar,categoriaId:worker.categoria_id,distritoId: worker.user.concelho.distrito_id,concelhoId: worker.user.concelho_id, isAdmin: worker.user.isAdmin,nif:worker.user.nif||'',iban:worker.user.iban||''});
   const [publishError, setPublishError] = useState(null);
   const navigate = useNavigate();
   const [isLoading,setIsLoading] = useState(false);
@@ -55,7 +55,7 @@ const EditWorker = () => {
  },[formData.distritoId]);
 
  const onUpdate = async (e) => {
-  console.log(formData);
+ 
   if (formData.nome.trim().length===0) {
     setPublishError('Informe o nome do profissional.');
     return;
@@ -73,6 +73,8 @@ const EditWorker = () => {
   fd.append('concelho_id',formData.concelhoId);
   fd.append('categoria_id',formData.categoriaId);
   fd.append('isAdmin',Number(formData.isAdmin));
+  fd.append('nif',formData.nif);
+  fd.append('iban',formData.iban);
    if(imagemAtualizada){
      fd.append('avatar',imagem);
    }
@@ -143,6 +145,14 @@ const handleFile = (e) => {
             <Select id="concelho" value={formData.concelhoId} onChange={(e) =>setFormData({ ...formData, concelhoId: e.target.value })}>
               {concelhos.map((concelho)=> <option key={concelho.id} value={concelho.id}>{concelho.nome}</option>)}
             </Select>
+        </div>
+        <div className='flex flex-col gap-4 justify-between'>
+            <Label htmlFor="nif" value="NIF:" />
+            <TextInput type='text' value={formData.nif} placeholder='NIF do cliente' required id='nif'className='flex-1' onChange={(e) =>setFormData({ ...formData, nif: e.target.value })}/>
+        </div>
+        <div className='flex flex-col gap-4 justify-between'>
+            <Label htmlFor="iban" value="IBAN:" />
+            <TextInput type='text' value={formData.iban} placeholder='IBAN do cliente' required id='iban'className='flex-1' onChange={(e) =>setFormData({ ...formData, iban: e.target.value })}/>
         </div>
         <div className='flex gap-4 sm:flex-row justify-start items-center'>
              <Checkbox id="isAdmin" checked={formData.isAdmin} onChange={e=>setFormData({...formData,isAdmin: !formData.isAdmin})} />
