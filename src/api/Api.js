@@ -1,15 +1,15 @@
 // --host=192.168.0.107
 
-const BASE_API = 'http://localhost:8000/api';
+//const BASE_API = 'http://localhost:8000/api';
 //const BASE_API = 'http://192.168.0.107:8000/api';
-//const BASE_API = 'https://rmrparttime.com/api';
+const BASE_API = 'https://rmrparttime.com/api';
 
 
 
 export default {
    
-   base_storage: 'http://localhost:8000/storage',
- //   base_storage: 'https://rmrparttime.com/storage',
+  // base_storage: 'http://localhost:8000/storage',
+   base_storage: 'https://rmrparttime.com/storage',
    // base_storage: 'http://192.168.0.107:8000/storage',
     
     
