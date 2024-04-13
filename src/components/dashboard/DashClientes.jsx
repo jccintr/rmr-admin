@@ -3,7 +3,7 @@ import { HiUsers } from "react-icons/hi";
 
 const DashClientes = ({value}) => {
   return (
-    <div className="w-[350px] md:w-[300px] bg-blue-500 border border-gray-200 rounded-lg shadow  dark:border-gray-700 px-4 py-5">
+    <div className="w-[330px] md:w-[300px]  mx-auto bg-blue-500 border border-gray-200 rounded-lg shadow  dark:border-gray-700 px-4 py-5">
       <div className='flex flex-row justify-between'>
             <HiUsers className='text-white' size={75}/>
             <div className='flex flex-col justify-around'>

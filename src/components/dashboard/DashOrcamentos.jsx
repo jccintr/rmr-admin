@@ -3,7 +3,7 @@ import { IoIosMegaphone } from "react-icons/io";
 
 const DashOrcamentos = ({value}) => {
   return (
-    <div className="w-[350px] md:w-[300px] bg-orange-400 border border-gray-200 rounded-lg shadow  dark:border-gray-700 px-4 py-5">
+    <div className="w-[330px] md:w-[300px] mx-auto bg-orange-400 border border-gray-200 rounded-lg shadow  dark:border-gray-700 px-4 py-5">
       <div className='flex flex-row justify-between'>
             <IoIosMegaphone className='text-white' size={60}/>
             <div className='flex flex-col justify-around 00'>
