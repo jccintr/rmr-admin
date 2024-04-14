@@ -3,7 +3,7 @@ import Api from '../api/Api';
 import DataContext from '../context/DataContext';
 import CardWorker from '../components/cards/CardWorker';
 import { CiSearch } from "react-icons/ci";
-import { TextInput,Spinner } from 'flowbite-react';
+import { TextInput,Spinner,Button } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -37,7 +37,8 @@ const Profissionais = () => {
   return (
     <div className='pt-4 w-full px-4  mx-auto dark:bg-slate-800'>
     <div className='flex flex-col items-center'>
-        <div className='flex w-full flex-col md:flex-row md:justify-end'>
+        <div className='flex w-full flex-col md:flex-row md:justify-between'>
+            <Button color="blue" onClick={()=>navigate('/novo-worker')}>Novo Profissional</Button>
             <TextInput type='text' placeholder='pesquisar...' rightIcon={CiSearch} className='mt-2 md:mt-0 lg:inline' onChange={e => setSearchText(e.target.value)}/>
         </div>
         

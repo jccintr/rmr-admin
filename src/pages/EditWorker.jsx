@@ -1,6 +1,6 @@
 import { useState,useContext, useEffect,useRef} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Alert, Button,Select, FileInput, Textarea , TextInput, Spinner,Checkbox,Label} from 'flowbite-react';
+import { Alert, Button,Select , TextInput, Spinner,Checkbox,Label} from 'flowbite-react';
 import DataContext from '../context/DataContext';
 import Api from '../api/Api';
 import { FaUserCircle } from "react-icons/fa";
@@ -106,8 +106,6 @@ const handleFile = (e) => {
   return (
     <div className='p-3 mx-auto min-h-screen dark:bg-slate-800'>
     <h1 className='text-center text-3xl my-7 font-semibold dark:text-gray-100'>Editando Profissional</h1>
-    
-    
     <form  className='flex flex-col gap-4 mx-auto max-w-3xl' encType="multipart/form-data">
         <div onClick={()=>{inputFile.current.click()}} className='flex flex-col gap-4 items-center justify-center'>
            {file?<img className="mb-3 w-[100px] h-[100px] rounded-full shadow-lg" src={file} alt="" />:

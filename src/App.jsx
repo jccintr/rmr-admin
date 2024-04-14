@@ -15,6 +15,7 @@ import ViewOrcamento from './pages/ViewOrcamento';
 import ViewProposta from './pages/ViewProposta';
 import ViewTransacao from './pages/ViewTransacao';
 import NewCliente from './pages/NewCliente';
+import NewWorker from './pages/NewWorker';
 
 
 function App() {
@@ -50,7 +51,8 @@ function App() {
                       <Route path='/edit-categoria/:Id' element={<EditCategoria />} />
                       <Route path='/edit-cliente' element={<EditCliente />} />
                       <Route path='/novo-cliente' element={<NewCliente />} />
-                      <Route path='/novo-worker' element={<EditWorker />} />
+                      <Route path='/edit-worker' element={<EditWorker />} />
+                      <Route path='/novo-worker' element={<NewWorker />} />
                       <Route path='/orcamento/:Id' element={<ViewOrcamento />} />
                       <Route path='/proposta' element={<ViewProposta />} />
                       <Route path='/order' element={<ViewTransacao />} />

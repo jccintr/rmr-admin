@@ -12,7 +12,7 @@ const NewCliente = () => {
     const [file, setFile] = useState(null);
     const [imagem, setImagem] = useState(null);
     const [imagemAtualizada, setImagemAtualizada] = useState(false);
-    const [formData, setFormData] = useState({nome:'',email:'',password:'',telefone:'',avatar: null,distritoId: 1,concelhoId: 1, isAdmin: false,nif:'',iban:''});
+    const [formData, setFormData] = useState({nome:'',email:'',password:'',password2:'',telefone:'',avatar: null,distritoId: 1,concelhoId: 1, isAdmin: false,nif:'',iban:''});
     const [publishError, setPublishError] = useState(null);
     const navigate = useNavigate();
     const [isLoading,setIsLoading] = useState(false);
@@ -63,6 +63,11 @@ const NewCliente = () => {
 
           if (formData.password.trim().length===0) {
             setPublishError('Informe a senha de acesso.');
+            return;
+          }
+
+          if (formData.password !== formData.password2) {
+            setPublishError('As senhas informadas são diferentes.');
             return;
           }
 
@@ -135,7 +140,11 @@ const NewCliente = () => {
         </div>
         <div className='flex flex-col gap-4 justify-between'>
             <Label htmlFor="password" value="Senha de Acesso:" />
-            <TextInput icon={FaLock} type='password' value={formData.password} placeholder='Senha de acesso' required id='password'className='flex-1' onChange={(e) =>setFormData({ ...formData, password: e.target.value })}/>
+            <TextInput icon={FaLock} type='password' value={formData.password} placeholder='Senha de acesso' required id='password' className='flex-1' onChange={(e) =>setFormData({ ...formData, password: e.target.value })}/>
+        </div>
+        <div className='flex flex-col gap-4 justify-between'>
+            <Label htmlFor="password2" value="Confirme a Senha:" />
+            <TextInput icon={FaLock} type='password' value={formData.password2} placeholder='Confirme a senha' required id='password2' className='flex-1' onChange={(e) =>setFormData({ ...formData, password2: e.target.value })}/>
         </div>
         <div className='flex flex-col gap-4 justify-between'>
             <Label htmlFor="telefone" value="Telefone:" />
