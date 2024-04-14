@@ -5,23 +5,20 @@ import DataContext from '../context/DataContext';
 import Api from '../api/Api';
 import { FaUserCircle } from "react-icons/fa";
 import { FaCrown } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
 
-const EditCliente = () => {
+const NewCliente = () => {
     const {loggedUser} = useContext(DataContext);
-    const params = useLocation();
-    const {cliente} = params.state;
     const [file, setFile] = useState(null);
     const [imagem, setImagem] = useState(null);
     const [imagemAtualizada, setImagemAtualizada] = useState(false);
-    const [formData, setFormData] = useState({nome:cliente.name,email:cliente.email,telefone:cliente.telefone||'',avatar: cliente.avatar,distritoId: cliente.concelho.distrito_id,concelhoId: cliente.concelho_id, isAdmin: cliente.isAdmin,nif:cliente.nif||'',iban:cliente.iban||''});
+    const [formData, setFormData] = useState({nome:'',email:'',password:'',telefone:'',avatar: null,distritoId: 1,concelhoId: 1, isAdmin: false,nif:'',iban:''});
     const [publishError, setPublishError] = useState(null);
     const navigate = useNavigate();
     const [isLoading,setIsLoading] = useState(false);
     const [distritos,setDistritos] = useState([]);
     const [concelhos,setConcelhos] = useState([]);
     const inputFile = useRef(null);
-    
-   
 
     useEffect(()=>{ // como se fossem os estados
         const getDistritos = async () => {
@@ -42,55 +39,84 @@ const EditCliente = () => {
        
      },[formData.distritoId]);
 
-     const onUpdate = async (e) => {
-      
-      if (formData.nome.trim().length===0) {
-        setPublishError('Informe o nome do cliente.');
-        return;
-      }
 
-      if (formData.telefone.trim().length===0) {
-        setPublishError('Informe o telefone do cliente.');
-        return;
-      }
+     const onAdd = async (e) => {
 
-      setIsLoading(true);
-      const fd = new FormData();
-      fd.append('nome',formData.nome);
-      fd.append('telefone',formData.telefone);
-      fd.append('concelho_id',formData.concelhoId);
-      fd.append('isAdmin',Number(formData.isAdmin));
-      fd.append('nif',formData.nif);
-      fd.append('iban',formData.iban);
-       if(imagemAtualizada){
-         fd.append('avatar',imagem);
-       }
+          setPublishError(null);
 
-      const response = await Api.updateCliente(loggedUser.token,fd,cliente.id);
+          if (formData.nome.trim().length===0) {
+            setPublishError('Informe o nome do cliente.');
+            return;
+          }
+
+          if (formData.email.trim().length===0) {
+            setPublishError('Informe o email do cliente.');
+            return;
+          }
+
+          const validateEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          if (!validateEmail.test(formData.email)) {
+            setPublishError('Email inválido.');
+            return;
+          }
+          
+
+          if (formData.password.trim().length===0) {
+            setPublishError('Informe a senha de acesso.');
+            return;
+          }
+
+          if (formData.telefone.trim().length===0) {
+            setPublishError('Informe o telefone do cliente.');
+            return;
+          }
+
+          if (formData.concelhoId===null) {
+            setPublishError('Selecione o Concelho.');
+            return;
+          }
+          setIsLoading(true);
+          const fd = new FormData();
+          fd.append('name',formData.nome);
+          fd.append('email',formData.email);
+          fd.append('password',formData.password);
+          fd.append('telefone',formData.telefone);
+          fd.append('concelho_id',formData.concelhoId);
+          fd.append('isAdmin',Number(formData.isAdmin));
+          fd.append('nif',formData.nif);
+          fd.append('iban',formData.iban);
+          if(imagemAtualizada){
+            fd.append('avatar',imagem);
+          }
+
+          const response = await Api.addCliente(loggedUser.token,fd);
          
-      if (response.status === 200){
-         navigate('/?tab=clientes');
-      } else {
-        let ret = await response.json();
-        setPublishError(ret.erro);
-      }
-      setIsLoading(false);
-    }
+          if (response.status === 201){
+             navigate('/?tab=clientes');
+          } else {
+            let ret = await response.json();
+            setPublishError(ret.erro);
+          }
+          setIsLoading(false);
 
-    const handleFile = (e) => {
-      if(e.target.files[0]){
-        setFile(URL.createObjectURL(e.target.files[0]));
-        setImagem(e.target.files[0]);
-        setImagemAtualizada(true);
-        setFormData({ ...formData, avatar: e.target.files[0]});
+
+     }
+
+
+     const handleFile = (e) => {
+        if(e.target.files[0]){
+          setFile(URL.createObjectURL(e.target.files[0]));
+          setImagem(e.target.files[0]);
+          setImagemAtualizada(true);
+          setFormData({ ...formData, avatar: e.target.files[0]});
+        }
+        
       }
-      
-    }
 
 
   return (
     <div className='p-3 mx-auto min-h-screen dark:bg-slate-800'>
-    <h1 className='text-center text-3xl my-7 font-semibold dark:text-gray-100'>Editando Cliente</h1>
+    <h1 className='text-center text-3xl my-7 font-semibold dark:text-gray-100'>Novo Cliente</h1>
     <form  className='flex flex-col gap-4 mx-auto max-w-3xl' encType="multipart/form-data">
         <div onClick={()=>{inputFile.current.click()}} className='flex flex-col gap-4 items-center justify-center'>
            {file?<img className="mb-3 w-[100px] h-[100px] rounded-full shadow-lg" src={file} alt="" />:
@@ -105,7 +131,11 @@ const EditCliente = () => {
         </div>
         <div className='flex flex-col gap-4 justify-between'>
             <Label htmlFor="email" value="E-mail:" />
-            <TextInput type='text'disabled value={formData.email} placeholder='E-mail do cliente' required id='email'className='flex-1' onChange={(e) =>setFormData({ ...formData, email: e.target.value })}/>
+            <TextInput type='email' value={formData.email} placeholder='E-mail do cliente' required id='email'className='flex-1' onChange={(e) =>setFormData({ ...formData, email: e.target.value })}/>
+        </div>
+        <div className='flex flex-col gap-4 justify-between'>
+            <Label htmlFor="password" value="Senha de Acesso:" />
+            <TextInput icon={FaLock} type='password' value={formData.password} placeholder='Senha de acesso' required id='password'className='flex-1' onChange={(e) =>setFormData({ ...formData, password: e.target.value })}/>
         </div>
         <div className='flex flex-col gap-4 justify-between'>
             <Label htmlFor="telefone" value="Telefone:" />
@@ -136,7 +166,7 @@ const EditCliente = () => {
              <Label className='dark:text-gray-100' htmlFor="isAdmin">Administrador do Sistema</Label>
              <FaCrown className=" text-amber-400" size={20} />
         </div>
-      <Button onClick={onUpdate} gradientMonochrome="info" disabled={isLoading}>{isLoading ? <Spinner size='sm'/>:'ATUALIZAR CLIENTE'}</Button>
+      <Button onClick={onAdd} gradientMonochrome="info" disabled={isLoading}>{isLoading ? <Spinner size='sm'/>:'ADICIONAR CLIENTE'}</Button>
       <Button onClick={()=> navigate('/?tab=clientes')} gradientMonochrome="failure" >CANCELAR</Button>
       {publishError && <Alert className='mt-5' color='failure'>{publishError}</Alert>}
     </form>
@@ -144,4 +174,4 @@ const EditCliente = () => {
   )
 }
 
-export default EditCliente
+export default NewCliente

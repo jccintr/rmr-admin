@@ -14,6 +14,8 @@ import EditWorker from './pages/EditWorker';
 import ViewOrcamento from './pages/ViewOrcamento';
 import ViewProposta from './pages/ViewProposta';
 import ViewTransacao from './pages/ViewTransacao';
+import NewCliente from './pages/NewCliente';
+
 
 function App() {
 
@@ -47,7 +49,8 @@ function App() {
                       <Route path="/nova-categoria" element={<NovaCategoria/>}/>
                       <Route path='/edit-categoria/:Id' element={<EditCategoria />} />
                       <Route path='/edit-cliente' element={<EditCliente />} />
-                      <Route path='/edit-worker' element={<EditWorker />} />
+                      <Route path='/novo-cliente' element={<NewCliente />} />
+                      <Route path='/novo-worker' element={<EditWorker />} />
                       <Route path='/orcamento/:Id' element={<ViewOrcamento />} />
                       <Route path='/proposta' element={<ViewProposta />} />
                       <Route path='/order' element={<ViewTransacao />} />

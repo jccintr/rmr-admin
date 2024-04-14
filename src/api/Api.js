@@ -251,6 +251,28 @@ export default {
         const json = await response.json();
         return json;
     },
+    addCliente: async (token,fd) => {
+        const response = await fetch(`${BASE_API}/user/create-client`, {
+            method: 'POST',
+            headers: { 
+              'Authorization': 'Bearer ' + token
+            },
+
+            body: fd
+     });
+        return response;
+    },
+    addWorker: async (token,fd) => {
+        const response = await fetch(`${BASE_API}/user/create-worker`, {
+            method: 'POST',
+            headers: { 
+              'Authorization': 'Bearer ' + token
+            },
+
+            body: fd
+     });
+        return response;
+    },
 
     
 };
