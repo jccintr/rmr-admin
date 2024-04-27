@@ -29,7 +29,7 @@ const NewWorker = () => {
       
     const getCategorias = async () => {
         setIsLoading(true);            
-        let json = await Api.getCategorias();
+        let json = await Api.getCategorias(loggedUser.token);
         setCategorias(json);
         setIsLoading(false);
     }

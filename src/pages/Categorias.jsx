@@ -4,12 +4,15 @@ import CardCategorias from '../components/cards/CardCategorias';
 import { CiSearch } from "react-icons/ci";
 import { TextInput,Button,Spinner } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
+import DataContext from '../context/DataContext';
+
 
 const Categorias = () => {
   const [categorias,setCategorias] = useState([]);
   const [searchText,setSearchText] = useState('');
   const [isLoading,setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const {loggedUser} = useContext(DataContext)
 
   const categoriasFiltrado = categorias.filter(
 		categoria => categoria.nome && categoria.nome.toLowerCase().includes(searchText.toLowerCase()),
@@ -20,9 +23,9 @@ const Categorias = () => {
        
     const getCategorias = async () => {
         setIsLoading(true);            
-        let json = await Api.getCategorias();
+        let json = await Api.getCategorias(loggedUser.token);
         setCategorias(json);
-       setIsLoading(false);
+        setIsLoading(false);
     }
     getCategorias();
     
