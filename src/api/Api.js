@@ -50,12 +50,13 @@ export default {
         });
         return response;
     },
-    getCategorias: async () => {
-        const req = await fetch(`${BASE_API}/categorias`, {
+    getCategorias: async (token) => {
+        const req = await fetch(`${BASE_API}/categorias/all`, {
             method: 'GET', 
             headers: {
                 Accept: 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             },
            
         });
